@@ -40,7 +40,7 @@
             this.R1C1 = new System.Windows.Forms.TextBox();
             this.Start = new System.Windows.Forms.Button();
             this.Stop = new System.Windows.Forms.Button();
-            this.Users_Scores = new System.Windows.Forms.TextBox();
+            this.Display = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -77,7 +77,7 @@
             this.R3C3.Size = new System.Drawing.Size(211, 111);
             this.R3C3.TabIndex = 8;
             this.R3C3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R3C3.DoubleClick += new System.EventHandler(this.BoxSelection);
+            this.R3C3.DoubleClick += new System.EventHandler(this.SetUserSymbol);
             // 
             // R2C3
             // 
@@ -88,7 +88,7 @@
             this.R2C3.Size = new System.Drawing.Size(211, 111);
             this.R2C3.TabIndex = 7;
             this.R2C3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R2C3.DoubleClick += new System.EventHandler(this.BoxSelection);
+            this.R2C3.DoubleClick += new System.EventHandler(this.SetUserSymbol);
             // 
             // R1C3
             // 
@@ -99,7 +99,7 @@
             this.R1C3.Size = new System.Drawing.Size(211, 111);
             this.R1C3.TabIndex = 6;
             this.R1C3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R1C3.DoubleClick += new System.EventHandler(this.BoxSelection);
+            this.R1C3.DoubleClick += new System.EventHandler(this.SetUserSymbol);
             // 
             // R3C2
             // 
@@ -110,7 +110,7 @@
             this.R3C2.Size = new System.Drawing.Size(211, 111);
             this.R3C2.TabIndex = 5;
             this.R3C2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R3C2.DoubleClick += new System.EventHandler(this.BoxSelection);
+            this.R3C2.DoubleClick += new System.EventHandler(this.SetUserSymbol);
             // 
             // R2C2
             // 
@@ -121,7 +121,7 @@
             this.R2C2.Size = new System.Drawing.Size(211, 111);
             this.R2C2.TabIndex = 4;
             this.R2C2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R2C2.DoubleClick += new System.EventHandler(this.BoxSelection);
+            this.R2C2.DoubleClick += new System.EventHandler(this.SetUserSymbol);
             // 
             // R1C2
             // 
@@ -132,7 +132,7 @@
             this.R1C2.Size = new System.Drawing.Size(211, 111);
             this.R1C2.TabIndex = 3;
             this.R1C2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R1C2.DoubleClick += new System.EventHandler(this.BoxSelection);
+            this.R1C2.DoubleClick += new System.EventHandler(this.SetUserSymbol);
             // 
             // R3C1
             // 
@@ -143,7 +143,7 @@
             this.R3C1.Size = new System.Drawing.Size(211, 111);
             this.R3C1.TabIndex = 2;
             this.R3C1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R3C1.DoubleClick += new System.EventHandler(this.BoxSelection);
+            this.R3C1.DoubleClick += new System.EventHandler(this.SetUserSymbol);
             // 
             // R2C1
             // 
@@ -154,7 +154,7 @@
             this.R2C1.Size = new System.Drawing.Size(211, 111);
             this.R2C1.TabIndex = 1;
             this.R2C1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R2C1.DoubleClick += new System.EventHandler(this.BoxSelection);
+            this.R2C1.DoubleClick += new System.EventHandler(this.SetUserSymbol);
             // 
             // R1C1
             // 
@@ -165,7 +165,7 @@
             this.R1C1.Size = new System.Drawing.Size(211, 111);
             this.R1C1.TabIndex = 0;
             this.R1C1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R1C1.DoubleClick += new System.EventHandler(this.BoxSelection);
+            this.R1C1.DoubleClick += new System.EventHandler(this.SetUserSymbol);
             // 
             // Start
             // 
@@ -190,23 +190,24 @@
             this.Stop.TabIndex = 2;
             this.Stop.Text = "Stop";
             this.Stop.UseVisualStyleBackColor = false;
+            this.Stop.Click += new System.EventHandler(this.End_Button);
             // 
-            // Users_Scores
+            // Display
             // 
-            this.Users_Scores.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Users_Scores.Location = new System.Drawing.Point(232, 375);
-            this.Users_Scores.Multiline = true;
-            this.Users_Scores.Name = "Users_Scores";
-            this.Users_Scores.Size = new System.Drawing.Size(211, 36);
-            this.Users_Scores.TabIndex = 3;
-            this.Users_Scores.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.Display.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Display.Location = new System.Drawing.Point(232, 375);
+            this.Display.Multiline = true;
+            this.Display.Name = "Display";
+            this.Display.Size = new System.Drawing.Size(211, 36);
+            this.Display.TabIndex = 3;
+            this.Display.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(676, 511);
-            this.Controls.Add(this.Users_Scores);
+            this.Controls.Add(this.Display);
             this.Controls.Add(this.Stop);
             this.Controls.Add(this.Start);
             this.Controls.Add(this.tableLayoutPanel1);
@@ -235,7 +236,7 @@
         private System.Windows.Forms.TextBox R3C1;
         private System.Windows.Forms.TextBox R2C1;
         private System.Windows.Forms.TextBox R1C1;
-        private System.Windows.Forms.TextBox Users_Scores;
+        private System.Windows.Forms.TextBox Display;
     }
 }
 
