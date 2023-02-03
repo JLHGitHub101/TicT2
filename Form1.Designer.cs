@@ -77,7 +77,7 @@
             this.R3C3.Size = new System.Drawing.Size(211, 111);
             this.R3C3.TabIndex = 8;
             this.R3C3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R3C3.DoubleClick += new System.EventHandler(this.SetUserSymbol);
+            this.R3C3.DoubleClick += new System.EventHandler(this.UsersMove);
             // 
             // R2C3
             // 
@@ -88,7 +88,7 @@
             this.R2C3.Size = new System.Drawing.Size(211, 111);
             this.R2C3.TabIndex = 7;
             this.R2C3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R2C3.DoubleClick += new System.EventHandler(this.SetUserSymbol);
+            this.R2C3.DoubleClick += new System.EventHandler(this.UsersMove);
             // 
             // R1C3
             // 
@@ -99,7 +99,7 @@
             this.R1C3.Size = new System.Drawing.Size(211, 111);
             this.R1C3.TabIndex = 6;
             this.R1C3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R1C3.DoubleClick += new System.EventHandler(this.SetUserSymbol);
+            this.R1C3.DoubleClick += new System.EventHandler(this.UsersMove);
             // 
             // R3C2
             // 
@@ -110,7 +110,7 @@
             this.R3C2.Size = new System.Drawing.Size(211, 111);
             this.R3C2.TabIndex = 5;
             this.R3C2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R3C2.DoubleClick += new System.EventHandler(this.SetUserSymbol);
+            this.R3C2.DoubleClick += new System.EventHandler(this.UsersMove);
             // 
             // R2C2
             // 
@@ -121,7 +121,7 @@
             this.R2C2.Size = new System.Drawing.Size(211, 111);
             this.R2C2.TabIndex = 4;
             this.R2C2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R2C2.DoubleClick += new System.EventHandler(this.SetUserSymbol);
+            this.R2C2.DoubleClick += new System.EventHandler(this.UsersMove);
             // 
             // R1C2
             // 
@@ -132,7 +132,7 @@
             this.R1C2.Size = new System.Drawing.Size(211, 111);
             this.R1C2.TabIndex = 3;
             this.R1C2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R1C2.DoubleClick += new System.EventHandler(this.SetUserSymbol);
+            this.R1C2.DoubleClick += new System.EventHandler(this.UsersMove);
             // 
             // R3C1
             // 
@@ -143,7 +143,7 @@
             this.R3C1.Size = new System.Drawing.Size(211, 111);
             this.R3C1.TabIndex = 2;
             this.R3C1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R3C1.DoubleClick += new System.EventHandler(this.SetUserSymbol);
+            this.R3C1.DoubleClick += new System.EventHandler(this.UsersMove);
             // 
             // R2C1
             // 
@@ -154,7 +154,7 @@
             this.R2C1.Size = new System.Drawing.Size(211, 111);
             this.R2C1.TabIndex = 1;
             this.R2C1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R2C1.DoubleClick += new System.EventHandler(this.SetUserSymbol);
+            this.R2C1.DoubleClick += new System.EventHandler(this.UsersMove);
             // 
             // R1C1
             // 
@@ -165,7 +165,7 @@
             this.R1C1.Size = new System.Drawing.Size(211, 111);
             this.R1C1.TabIndex = 0;
             this.R1C1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R1C1.DoubleClick += new System.EventHandler(this.SetUserSymbol);
+            this.R1C1.DoubleClick += new System.EventHandler(this.UsersMove);
             // 
             // Start
             // 
