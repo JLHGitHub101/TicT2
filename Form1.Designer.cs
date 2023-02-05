@@ -76,8 +76,9 @@
             this.R3C3.Name = "R3C3";
             this.R3C3.Size = new System.Drawing.Size(211, 111);
             this.R3C3.TabIndex = 8;
+            this.R3C3.Tag = "8";
             this.R3C3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R3C3.DoubleClick += new System.EventHandler(this.UsersMove);
+            this.R3C3.DoubleClick += new System.EventHandler(this.MakeAMove);
             // 
             // R2C3
             // 
@@ -87,8 +88,9 @@
             this.R2C3.Name = "R2C3";
             this.R2C3.Size = new System.Drawing.Size(211, 111);
             this.R2C3.TabIndex = 7;
+            this.R2C3.Tag = "5";
             this.R2C3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R2C3.DoubleClick += new System.EventHandler(this.UsersMove);
+            this.R2C3.DoubleClick += new System.EventHandler(this.MakeAMove);
             // 
             // R1C3
             // 
@@ -98,8 +100,9 @@
             this.R1C3.Name = "R1C3";
             this.R1C3.Size = new System.Drawing.Size(211, 111);
             this.R1C3.TabIndex = 6;
+            this.R1C3.Tag = "2";
             this.R1C3.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R1C3.DoubleClick += new System.EventHandler(this.UsersMove);
+            this.R1C3.DoubleClick += new System.EventHandler(this.MakeAMove);
             // 
             // R3C2
             // 
@@ -109,8 +112,9 @@
             this.R3C2.Name = "R3C2";
             this.R3C2.Size = new System.Drawing.Size(211, 111);
             this.R3C2.TabIndex = 5;
+            this.R3C2.Tag = "7";
             this.R3C2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R3C2.DoubleClick += new System.EventHandler(this.UsersMove);
+            this.R3C2.DoubleClick += new System.EventHandler(this.MakeAMove);
             // 
             // R2C2
             // 
@@ -120,8 +124,9 @@
             this.R2C2.Name = "R2C2";
             this.R2C2.Size = new System.Drawing.Size(211, 111);
             this.R2C2.TabIndex = 4;
+            this.R2C2.Tag = "4";
             this.R2C2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R2C2.DoubleClick += new System.EventHandler(this.UsersMove);
+            this.R2C2.DoubleClick += new System.EventHandler(this.MakeAMove);
             // 
             // R1C2
             // 
@@ -131,8 +136,9 @@
             this.R1C2.Name = "R1C2";
             this.R1C2.Size = new System.Drawing.Size(211, 111);
             this.R1C2.TabIndex = 3;
+            this.R1C2.Tag = "1";
             this.R1C2.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R1C2.DoubleClick += new System.EventHandler(this.UsersMove);
+            this.R1C2.DoubleClick += new System.EventHandler(this.MakeAMove);
             // 
             // R3C1
             // 
@@ -142,8 +148,9 @@
             this.R3C1.Name = "R3C1";
             this.R3C1.Size = new System.Drawing.Size(211, 111);
             this.R3C1.TabIndex = 2;
+            this.R3C1.Tag = "6";
             this.R3C1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R3C1.DoubleClick += new System.EventHandler(this.UsersMove);
+            this.R3C1.DoubleClick += new System.EventHandler(this.MakeAMove);
             // 
             // R2C1
             // 
@@ -153,8 +160,9 @@
             this.R2C1.Name = "R2C1";
             this.R2C1.Size = new System.Drawing.Size(211, 111);
             this.R2C1.TabIndex = 1;
+            this.R2C1.Tag = "3";
             this.R2C1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R2C1.DoubleClick += new System.EventHandler(this.UsersMove);
+            this.R2C1.DoubleClick += new System.EventHandler(this.MakeAMove);
             // 
             // R1C1
             // 
@@ -164,29 +172,31 @@
             this.R1C1.Name = "R1C1";
             this.R1C1.Size = new System.Drawing.Size(211, 111);
             this.R1C1.TabIndex = 0;
+            this.R1C1.Tag = "0";
             this.R1C1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.R1C1.DoubleClick += new System.EventHandler(this.UsersMove);
+            this.R1C1.DoubleClick += new System.EventHandler(this.MakeAMove);
             // 
             // Start
             // 
             this.Start.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.Start.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(192)))), ((int)(((byte)(0)))));
             this.Start.Font = new System.Drawing.Font("Segoe UI", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Start.Location = new System.Drawing.Point(12, 375);
+            this.Start.Location = new System.Drawing.Point(15, 407);
             this.Start.Name = "Start";
-            this.Start.Size = new System.Drawing.Size(214, 124);
+            this.Start.Size = new System.Drawing.Size(428, 92);
             this.Start.TabIndex = 1;
             this.Start.Text = "Start";
             this.Start.UseVisualStyleBackColor = false;
-            this.Start.Click += new System.EventHandler(this.Start_Click);
+            this.Start.Click += new System.EventHandler(this.StartGame);
             // 
             // Stop
             // 
+            this.Stop.AutoSize = true;
             this.Stop.BackColor = System.Drawing.Color.Red;
-            this.Stop.Font = new System.Drawing.Font("Segoe UI", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Stop.Location = new System.Drawing.Point(449, 371);
+            this.Stop.Font = new System.Drawing.Font("Segoe UI", 48F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Stop.Location = new System.Drawing.Point(449, 407);
             this.Stop.Name = "Stop";
-            this.Stop.Size = new System.Drawing.Size(215, 128);
+            this.Stop.Size = new System.Drawing.Size(215, 96);
             this.Stop.TabIndex = 2;
             this.Stop.Text = "Stop";
             this.Stop.UseVisualStyleBackColor = false;
@@ -195,10 +205,10 @@
             // Display
             // 
             this.Display.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Display.Location = new System.Drawing.Point(232, 375);
+            this.Display.Location = new System.Drawing.Point(15, 371);
             this.Display.Multiline = true;
             this.Display.Name = "Display";
-            this.Display.Size = new System.Drawing.Size(211, 36);
+            this.Display.Size = new System.Drawing.Size(649, 36);
             this.Display.TabIndex = 3;
             this.Display.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 

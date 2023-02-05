@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,29 +6,28 @@ namespace T3
 {
     public partial class Form1 : Form
     {
-        Random rand = new Random();
-        bool startgame = false;
-        bool userFirst = false;
-        bool winner = false;     
-        int movesLeft = 9;
-        bool user = false;
-        string computerSymbol = "X";
 
+        string usersMove = "Users Move";
+        string computerMove = "Computers Move";
+        Random rand = new Random();
+        int compNumGen;
+        string computerSymbol = "X";
+        bool startgame = false;
+        bool userFirst = true;
+        bool winner = false;
+        int movesLeft = 8;
+        bool user = false;
+        string userSymbol;
+
+        // Something 
 
         public Form1()
         {
             InitializeComponent();
         }
-        /*  Create a Timer Class 
-		private static void Timer() 
-		{
-			Timer exitTimer = new Timer();
-			exitTimer.Interval = 10000;
-			exitTimer.Start();
-		}
-		*/
-        private void Start_Click(object sender, EventArgs e)
+        private void StartGame(object sender, EventArgs e)
         {
+            CleanBoard();
             startgame = true;
             int human = rand.Next(1, 11);
             int computer = rand.Next(1, 11);
@@ -45,193 +38,114 @@ namespace T3
             }
             while (!((firstMove == human) || (firstMove == computer)));
 
-            if (firstMove == human)
+            if (firstMove != human)
             {
-                Display.Text = "Users Moves";
-                userFirst = true;
-            }
-            else
-            {
-                Display.Text = "Computers Move";
-                ComputerMove();
-            }
-        }
-        private void UsersMove(object sender, EventArgs e)
-        {
-            if (startgame == true && userFirst == true)
-            {
-                TextBox userSymbol = (TextBox)sender;
-                userSymbol.Text = "X";
-                user = true;
-                Ch_for_Winner();
+                userFirst = false;
+                Display.Text = computerMove;
                 ComputerMove();
             }
             else
-            {
-                TextBox userSymbol = (TextBox)sender;
-                userSymbol.Text = "O";
-                user = true;
-                Ch_for_Winner();
-                ComputerMove();
-            }
-        }
-        private void ComputerMove()
-        {
-            if (userFirst == true)
             {
                 computerSymbol = "O";
+                Display.Text = usersMove;
             }
-            int computermove = rand.Next(1, 10);
-            switch (computermove)
-            {
+        }
+        private void MakeAMove(object sender, EventArgs e)
+        {
 
-                case 1:
-                    {
-                        if (R1C1.Text == "")
-                        {
-                            R1C1.Text = computerSymbol;
-                        }
-                        else { ComputerMove(); }
-                    }
-                    break;
-                case 2:
-                    {
-                        if (R1C2.Text == "")
-                        {
-                            R1C2.Text = computerSymbol;
-                        }
-                        else { ComputerMove(); }
-                    }
-                    break;
-                case 3:
-                    {
-                        if (R1C3.Text == "")
-                        {
-                            R1C3.Text = computerSymbol;
-                        }
-                        else { ComputerMove(); }
-                    }
-                    break;
-                case 4:
-                    {
-                        if (R2C1.Text == "")
-                        {
-                            R2C1.Text = computerSymbol;
-                        }
-                        else { ComputerMove(); }
-                    }
-                    break;
-                case 5:
-                    {
-                        if (R2C2.Text == "")
-                        {
-                            R2C2.Text = computerSymbol;
-                        }
-                        else { ComputerMove(); }
-                    }
-                    break;
-                case 6:
-                    {
-                        if (R2C3.Text == "")
-                        {
-                            R2C3.Text = computerSymbol;
-                        }
-                        else { ComputerMove(); }
-                    }
-                    break;
-                case 7:
-                    {
-                        if (R3C1.Text == "")
-                        {
-                            R3C1.Text = computerSymbol;
-                        }
-                        else { ComputerMove(); }
-                    }
-                    break;
-                case 8:
-                    {
-                        if (R3C2.Text == "")
-                        {
-                            R3C2.Text = computerSymbol;
-                        }
-                        else { ComputerMove(); }
-                    }
-                    break;
-                case 9:
-                    {
-                        if (R3C3.Text == "")
-                        {
-                            R3C3.Text = computerSymbol;
-                        }
-                        else { ComputerMove(); }
-                    }
-                    break;
-                default:
-                    {
-                        Display.Text = "I should not be Here.";
-                    }
-                    break;
+            if (startgame == false)
+            {
+                Display.Text = "Press Start for New Game or Stop to End";
             }
+            else
+            {
+               
+                if (userFirst == true)
+                {
+                    string index = $"{sender}" + ".tag";
+                    user = true;
+                    GameBoard(index, "X");
+                }
+                else
+                {
+                    string index = $"{sender}" + ".tag";
+                    user = true;
+                    GameBoard(index, "O");
+                }
+                Ch_for_Winner();
+                ComputerMove();
+            }
+        }
+        private async void ComputerMove()
+        {
+            string[] board = new string[] {R1C1.Text, R1C2.Text, R1C3.Text, 
+                                            R2C1.Text, R2C2.Text, R2C3.Text, 
+                                            R3C1.Text, R3C2.Text, R3C3.Text};
+            user = false;
+            Display.Text = computerMove;
+            await Task.Delay(2000);
+            string position;
+
+            do
+            {
+                compNumGen = rand.Next(0, 8);
+
+            } while (board[compNumGen] != "");
+
+            position = compNumGen.ToString();
+            GameBoard(position, computerSymbol);
+
             Ch_for_Winner();
+            await Task.Delay(1000);
+            Display.Text = usersMove;
         }
-        private void End_Button(object sender, EventArgs e)
+        private async void Ch_for_Winner()
         {
-            Display.Text = "You have Ended the Game";
-            // Input a Timer to Display Text above before exiting game. 
-            Application.Exit();
+            movesLeft--;
 
-        }
-        private void Ch_for_Winner()
-        {
-            --movesLeft;
-            if (movesLeft == 4)
+            // Test that a Verical Pattern creates a winning pattern
+            if ((R1C1.Text == R1C2.Text) && (R1C2.Text == R1C3.Text) && R1C1.Text != "")
+            { winner = true; }
+            else if ((R2C1.Text == R2C2.Text) && (R2C2.Text == R2C3.Text) && R2C1.Text != "")
+            { winner = true; }
+            else if ((R3C1.Text == R3C2.Text) && (R3C2.Text == R3C3.Text) && R3C1.Text != "")
+            { winner = true; }
+
+            // Test that a Horizontal Pattern creates a winning pattern
+            else if ((R1C1.Text == R2C1.Text) && (R2C1.Text == R3C1.Text) && R1C1.Text != "")
+            { winner = true; }
+            else if ((R1C2.Text == R2C2.Text) && (R2C2.Text == R3C2.Text) && R1C2.Text != "")
+            { winner = true; }
+            else if ((R1C3.Text == R2C3.Text) && (R2C3.Text == R3C3.Text) && R1C3.Text != "")
+            { winner = true; }
+
+            // Test that a Diagonal Pattern creates a winning pattern
+            else if ((R1C1.Text == R2C2.Text) && (R2C2.Text == R3C3.Text) && R1C1.Text != "")
+            { winner = true; }
+            else if ((R3C1.Text == R2C2.Text) && (R2C2.Text == R1C3.Text) && R3C1.Text != "")
+            { winner = true; }
+
+            if (winner == true || movesLeft == 0)
             {
-
-                // Test that a Verical Pattern creates a winning pattern
-                if ((R1C1.Text == R1C2.Text) && (R1C2.Text == R1C3.Text) && R1C1.Text != "")
-                { winner = true; }
-                else if ((R2C1.Text == R2C2.Text) && (R2C2.Text == R2C3.Text) && R1C1.Text != "")
-                { winner = true; }
-                else if ((R3C1.Text == R3C2.Text) && (R3C2.Text == R3C3.Text) && R3C1.Text != "")
-                { winner = true; }
-
-                // Test that a Horizontal Pattern creates a winning pattern
-                else if ((R1C1.Text == R2C1.Text) && (R2C1.Text == R3C1.Text) && R1C1.Text != "")
-                { winner = true; }
-                else if ((R1C2.Text == R2C2.Text) && (R2C2.Text == R3C2.Text) && R1C2.Text != "")
-                { winner = true; }
-                else if ((R1C3.Text == R2C3.Text) && (R2C3.Text == R3C3.Text) && R1C3.Text != "")
-                { winner = true; }
-
-                // Test that a Diagonal Pattern creates a winning pattern
-                else if ((R1C1.Text == R2C2.Text) && (R2C2.Text == R3C3.Text) && R1C1.Text != "")
-                { winner = true; }
-                else if ((R3C1.Text == R2C2.Text) && (R2C2.Text == R1C3.Text) && R3C1.Text != "")
-                { winner = true; }
-
                 // Determine who won User or Computer
-                if (winner == true && user == true)
+                if (user == true)
                 {
                     Display.Text = "You Won";
-                    CleanBoard();
-
-                    // Create a Delay then restart Game 
+                    await Task.Delay(10000); ;
                 }
-                else if (winner == true && user == false)
+                else if (user == false)
                 {
                     Display.Text = "Computer Won";
-                    CleanBoard();
-
-                    // Create a Delay then restart Game
+                    await Task.Delay(10000);
                 }
-            }
-            else if (movesLeft == 0)
-            {
-                Display.Text = "Cats Game";
+                // Check for Cats Game
+                else if (movesLeft == 0)
+                {
+                    Display.Text = "Cats Game";
+                    await Task.Delay(10000);
+                }
                 CleanBoard();
             }
-            user = false;
-
         }
         private void CleanBoard()
         {
@@ -244,12 +158,39 @@ namespace T3
             R3C1.Text = "";
             R3C2.Text = "";
             R3C3.Text = "";
-            winner = false;
-            user = false;
-            startgame = false;
-            userFirst= false;
-            movesLeft = 9;
-            
+            bool startgame = false;
+            bool userFirst = true;
+            bool winner = false;
+            int movesLeft = 8;
+            bool user = false;
+        }
+        private async void End_Button(object sender, EventArgs e)
+        {
+            Display.Text = "You have Ended the Game";
+            await Task.Delay(1000);
+            Application.Exit();
+        }
+        private void GameBoard(string indexee, string symbol)
+        {
+            string[] board = new string[] {R1C1.Text, R1C2.Text, R1C3.Text,
+                                        R2C1.Text, R2C2.Text, R2C3.Text,
+                                        R3C1.Text, R3C2.Text, R3C3.Text};
+           int index = Int32.Parse(indexee);
+
+            if (user == true)
+            {
+                board[index] = symbol;
+            }
         }
     }
 }
+
+
+// 
+//                              R1C1.Text , R1C2.Text, R1C3.Text,
+//                            R2C1.Text,R2C2.Text,R2C3.Text,
+//                          R3C1.Text,R3C2.Text,R3C3.Text,};
+//
+
+
+
